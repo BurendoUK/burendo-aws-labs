@@ -1,3 +1,6 @@
+# AWS Service Information
+This glossary supplies information on AWS services with an alternative definition will help to grasp understanding.
+
 # VPC
 *Virtual Private Cloud*
 
