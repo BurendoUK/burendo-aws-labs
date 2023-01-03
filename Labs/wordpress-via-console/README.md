@@ -15,11 +15,10 @@ We've built this instruction set to operate using AWS free-tier services, read m
 To follow along, you must be signed in to an AWS account with billing set up. Don't fear, as long as you follow the tear down, you'll not cost yourself much.
 
 In this lab we will cover the following services:
-- VPC
-- VPC Endpoints
-- EC2
-- RDS
-- S3
+- [VPC](../service-information/README.md#vpc)
+- [VPC Endpoints](../service-information/README.md#vpc-endpoint)
+- [EC2](../service-information/README.md#ec2)
+- [RDS](../service-information/README.md#rds)
 
 Tip: Make use of the service search bar, when changing between services, at the top of the console page.
 
