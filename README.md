@@ -12,3 +12,7 @@ For any services mentioned throughout the labs, you can find additional supporti
 
 ## Issues
 Should you come across any issues when using the labs, please raise an issue using Github.
+
+
+## Misc
+The '.github' folder offers no value related to any labs. It is a supporting element to present these labs on the [Burendo Handbook](https://handbook.burendo.com/)
