@@ -90,6 +90,17 @@ RDS is an AWS managed service for creating relational databases. It offers main 
 
 [View AWS information here](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Welcome.html)
 
+
+# S3
+*Simple storage service*
+
+S3 is an object storage service with fantastic availability, redundancy and pricing. You can think of object storage as an infinitely scalable hard drive for storing files.
+
+When you (an application or other AWS managed service on your behalf) upload a file to S3, you can make it available on the web with a URL like Dropbox.
+Or you can completely lock down who can access the files within the S3 bucket using IAM.
+
+[View AWS information here](https://aws.amazon.com/s3/)
+
 # IAM
 *Identity and Access Management*
 
