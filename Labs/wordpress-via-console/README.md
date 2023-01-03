@@ -258,12 +258,12 @@ We can run the following commands in order:
 The following command will download and execute an automated setup script. You will see a lot of commands being actioned.
 Don't panic! It is normal.
 
-```wget -O - https://raw.githubusercontent.com/BurendoUK/burendo-aws-labs/wordpress-via-console/ec2-wordpress-install.sh | bash```
+```wget -O - https://raw.githubusercontent.com/BurendoUK/burendo-aws-labs/main/Labs/wordpress-via-console/ec2-wordpress-install.sh | bash```
 
 Now that we've downloaded and installed the necessary service applications and the WordPress source code, we can setup a database schema to round off everything we need to do here.
 
 Running the following command will give you prompts to enter the RDS details you've taken a note of. Be sure to enter them within any spacing!
-```wget -O - https://raw.githubusercontent.com/BurendoUK/burendo-aws-labs/wordpress-via-console/ec2-database-setup.sh | bash```
+```wget -O - https://raw.githubusercontent.com/BurendoUK/burendo-aws-labs/main/Labs/wordpress-via-console/ec2-database-setup.sh | bash```
 
 We've done all we need to do here. You can close the Systems Manager window safely by closing `Terminate` on the top right.
 
