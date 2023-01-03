@@ -22,7 +22,7 @@ In this lab we will cover the following services:
 
 Tip: Make use of the service search bar, when changing between services, at the top of the console page.
 
-# Building a VPC
+## Building a VPC
 For more information on VPC, refer to [service-information/README.md](../service-information/README.md#vpc).
 
 At the core of any service on AWS is the VPC. It is fundamental in order to facilitate network traffic between services.
@@ -96,7 +96,7 @@ Keeping everything else as default, click create and repeat the actions for the 
 
 That is it for this section.
 
-# Create an IAM profile
+## Create an IAM profile
 For more information on IAM, refer to [service-information/README.md](../service-information/README.md#iam)
 
 Now that we've created our VPC and our endpoints, we need to allow our soon to be created EC2 permission to communicate with the AWS Systems Manager service. Permissions on a service level are handled by the IAM service.
@@ -113,7 +113,7 @@ Finally, we want to name our new role and confirm the policy. We will call it `w
 ![IAM Role Wizard](images/iam-wizard-part-3.png)
 
 
-# Create an EC2 instance
+## Create an EC2 instance
 For more information on EC2, refer to [service-information/README.md](../service-information/README.md#ec2).
 
 Head to the EC2 service and click `Launch Instance`.
@@ -147,7 +147,7 @@ Help: [What is a Security Group?](../service-information/README.md#security-grou
 That's it! Click `Launch Instance` on the right hand side.
 We'll come back to work on this EC2 shortly.
 
-# Create an RDS database
+## Create an RDS database
 For more information on RDS, refer to [service-information/README.md](../service-information/README.md#rds).
 
 WordPress requires a MySQL relational database in order to store data about the website content, user accounts and other metadata.
@@ -197,7 +197,7 @@ Keep all of these safe!
 
 That's it for RDS.
 
-# Modifying Security Groups
+## Modifying Security Groups
 So far, we've created three security groups.
 One for the VPC endpoints, one for the EC2 instance and just a moment ago, one for the RDS.
 
@@ -231,7 +231,7 @@ Next we want to allow the EC2 instance to connect to the RDS Database. We can do
 
 That's it here.
 
-# Connecting to the EC2
+## Connecting to the EC2
 Now that we've created our VPC, EC2 and RDS. We want to begin using them.
 
 Head to the EC2 service page, select the instance we want to install WordPress on - called `wordpress-srv`.
@@ -266,7 +266,7 @@ Running the following command will give you prompts to enter the RDS details you
 
 We've done all we need to do here. You can close the Systems Manager window safely by closing `Terminate` on the top right.
 
-# Connect to the website
+## Connect to the website
 Now we've done everything we needed to, to allow us to configure WordPress. We can now grab the Public IP address for the EC2 instance `wordpress-srv`, open a new tab and go there.
 
 All being well, you will be presented with the WordPress configuration screen.
@@ -291,7 +291,7 @@ Click Install and wahoo! You've created a WordPress website!
 
 ![Final product, wordpress website](images/wordpress-website.png)
 
-# Going further - independently
+## Going further - independently
 
 Now that you know how to navigate the AWS console, you could try to create an S3 bucket and offload all your WordPress media to S3 - so that if the EC2 instance breaks for any reason, your media is backed up and served from the S3 bucket and your data is backed up via your RDS.
 This pattern makes the EC2 ephemeral and only for 'compute' activities.
@@ -301,7 +301,7 @@ To facilitate that off-loading, you could use the [WP Offload Media Plugin](http
 For more information on S3, refer to [service-information/README.md](../service-information/README.md#s3).
 
 
-# Tear down
+## Tear down
 When you are ready to tear down your WordPress website - follow these instructions:
 
 Head to the EC2 service page, find your instance `wordpress-srv` and terminate it.
