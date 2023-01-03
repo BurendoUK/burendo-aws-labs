@@ -16,3 +16,5 @@ Should you come across any issues when using the labs, please raise an issue usi
 
 ## Misc
 The '.github' folder offers no value related to any labs. It is a supporting element to present these labs on the [Burendo Handbook](https://handbook.burendo.com/)
+
+For contributors, the GitHub actions pipeline will run on merge to main - this will trigger the [merge pipeline](https://github.com/BurendoUK/burendo-handbook-infrastructure/blob/main/.github/workflows/tf-merge.yml) in [BurendoUK/burendo-handbook-infrastructure](https://github.com/BurendoUK/burendo-handbook-infrastructure) repo.
