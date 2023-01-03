@@ -291,6 +291,16 @@ Click Install and wahoo! You've created a WordPress website!
 
 ![Final product, wordpress website](images/wordpress-website.png)
 
+# Going further - independently
+
+Now that you know how to navigate the AWS console, you could try to create an S3 bucket and offload all your WordPress media to S3 - so that if the EC2 instance breaks for any reason, your media is backed up and served from the S3 bucket and your data is backed up via your RDS.
+This pattern makes the EC2 ephemeral and only for 'compute' activities.
+
+To facilitate that off-loading, you could use the [WP Offload Media Plugin](https://en-gb.wordpress.org/plugins/amazon-s3-and-cloudfront/).
+
+For more information on S3, refer to [service-information/README.md](../service-information/README.md#s3).
+
+
 # Tear down
 When you are ready to tear down your WordPress website - follow these instructions:
 
