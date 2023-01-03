@@ -5,7 +5,7 @@ We've built this instruction set to operate using AWS free-tier services, read m
 
 ## Prerequisites
 
-- AWS Account
+- [AWS Account](https://docs.aws.amazon.com/accounts/latest/reference/welcome-first-time-user.html#getting-started-step1)
 - A web browser
 
 ## Known Issues
