@@ -18,8 +18,8 @@ sudo amazon-linux-extras install nginx1 -y
 
 # Configure NGINX
 touch /etc/nginx/conf.d/wordpress.conf
-sudo rm /etc/nginx/nginx.conf
-sudo cat <<EOF | sudo tee -a /etc/nginx/nginx.conf
+
+sudo cat <<EOF | sudo tee /etc/nginx/nginx.conf
 user nginx;
 worker_processes auto;
 error_log /var/log/nginx/error.log;
@@ -71,7 +71,7 @@ http {
 }
 EOF
 
-sudo cat <<EOF | sudo tee -a /etc/nginx/conf.d/wordpress.conf
+sudo cat <<EOF | sudo tee /etc/nginx/conf.d/wordpress.conf
 server {
     listen 80 default_server;
     root /var/www/html;

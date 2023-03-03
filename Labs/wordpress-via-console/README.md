@@ -49,59 +49,10 @@ Click create & let AWS do the heavy lifting for you. AWS will create your VPC, s
 
 Once the VPC is created, we need to create some VPC endpoints within the newly created VPC.
 
-## Creating and using VPC Endpoints
-For more information on VPC Endpoints, refer to [service-information/README.md](../service-information/README.md#vpc-endpoint)
-
-We want to be able to securely connect to our EC2 instance (when we create it in just a moment). We will be using AWS Systems Manager service in order to do this, but before we do, we need to complete the necessary setup for connections to be able to be made.
-
-We will be using VPC endpoints to facilitate this secure connection within the AWS network. Just before we do, we need to create a `Security Group` for the endpoints. For more information on Security Groups, refer to [service-information/README.md](../service-information/README.md#security-group)
-
-### Security Group creation
-Within the VPC service page, you will see a `Security Group` option on the left hand side navigation. Head there and then click `Create security group`.
-
-|Option |Value |
-|:------|:-----|
-|Name               | wordpress-endpoints  |
-|Description        | SG for wordpress endpoints |
-|VPC                | wordpress-vpc |
-|Inbound Rules > Type | HTTPS |
-|Inbound Rules > Source | wordpress-srv (Security Group) |
-
-Click create!
-
-![Security group creation for VPC endpoints](images/vpc-endpoint-security-group.png)
-
-### Endpoint creation
-Within the VPC service page, you will see a `Endpoints` option on the left hand side navigation. Head there and then click `Create Endpoint`.
-
-|Option |Value |
-|:------|:-----|
-|Name   | wordpress-ssm  |
-|Service Category | AWS services |
-|Services | com.amazonaws.eu-west-2.ssm |
-|VPC      | wordpress-vpc |
-
-![VPC Endpoint Wizard](images/vpc-endpoint-wizard-part-1.png)
-
-We want to attach the VPC endpoint to the public subnets - which is where we will be placing our EC2 instance shortly.
-Select all three public subnets as follows:
-![VPC Endpoint Wizard subnet selection](images/vpc-endpoint-wizard-part-2.png)
-
-Now we want to attach the  newly created security group 'wordpress-endpoints' to our VPC endpoint.
-![VPC Endpoint Wizard security group selection](images/vpc-endpoint-wizard-part-3.png)
-
-Keeping everything else as default, click create and repeat the actions for the following endpoints:
-|Option |Value |
-|:------|:-----|
-|Endpoint Service | com.amazonaws.eu-west-2.ssmmessages  |
-|Endpoint Service | com.amazonaws.eu-west-2.ec2messages  |
-
-That is it for this section.
-
 ## Create an IAM profile
 For more information on IAM, refer to [service-information/README.md](../service-information/README.md#iam)
 
-Now that we've created our VPC and our endpoints, we need to allow our soon to be created EC2 permission to communicate with the AWS Systems Manager service. Permissions on a service level are handled by the IAM service.
+Now that we've created our VPC, we need to allow our soon to be created EC2 permission to communicate with the AWS Systems Manager service. Permissions on a service level are handled by the IAM service.
 
 Head to the `IAM` service page, choosing `Roles` on the left hand side navigation, click `Create Role`.
 
@@ -131,11 +82,19 @@ Using the launch instance wizard, we want to configure the instance like such:
 
 |Option |Value |
 |:------|:-----|
+|Key pair name | Proceed without a key pair (Not recommended) |
+
+(Note that we'll connect later using SSM so an SSH key pair is not needed)
+
+![EC2 Wizard key pair options](images/ec2-key-pair.png)
+
+|Option |Value |
+|:------|:-----|
 |Network Settings > Edit | We want to edit the options |
 |Network Settings > VPC | wordpress-vpc |
 |Network Settings > Subnet | Choose any with 'public' in the name |
 |Network Settings > Auto-assign IP | Enable |
-|Network Settings > Firewall | Create new |
+|Network Settings > Firewall | Create security group |
 |Network Settings > Security Group name | wordpress-srv |
 |Network Settings > Security Group description | wordpress-srv |
 ![EC2 Wizard further options](images/ec2-wizard-part-2.png)
@@ -144,10 +103,59 @@ Finally, we want to attach the IAM profile we created in the previous step.
 You should be able to select `wordpress-ec2` in the drop down box.
 ![EC2 Wizard attach IAM profile](images/ec2-wizard-part-3.png)
 
-Help: [What is a Security Group?](../service-information/README.md#security-group)
-
 That's it! Click `Launch Instance` on the right hand side.
 We'll come back to work on this EC2 shortly.
+
+### Security Group creation
+Go back to the VPC service page, you will see a `Security Groups` option on the left hand side navigation. Head there and then click `Create security group`.
+
+|Option |Value |
+|:------|:-----|
+|Name               | wordpress-endpoints  |
+|Description        | SG for wordpress endpoints |
+|VPC                | wordpress-vpc |
+|Inbound Rules > Type | HTTPS |
+|Inbound Rules > Source | wordpress-srv (Security Group) |
+
+Click create!
+
+![Security group creation for VPC endpoints](images/vpc-endpoint-security-group.png)
+
+ For more information on Security Groups, refer to [service-information/README.md](../service-information/README.md#security-group)
+
+## Creating and using VPC Endpoints
+For more information on VPC Endpoints, refer to [service-information/README.md](../service-information/README.md#vpc-endpoint)
+
+We want to be able to securely connect to our EC2 instance (when we create it in just a moment). We will be using AWS Systems Manager service in order to do this, but before we do, we need to complete the necessary setup for connections to be able to be made.
+
+We will be using VPC endpoints to facilitate this secure connection within the AWS network.
+
+### Endpoint creation
+Within the VPC service page, you will see a `Endpoints` option on the left hand side navigation. Head there and then click `Create Endpoint`.
+
+|Option |Value |
+|:------|:-----|
+|Name   | wordpress-ssm  |
+|Service Category | AWS services |
+|Services | com.amazonaws.eu-west-2.ssm |
+|VPC      | wordpress-vpc |
+
+![VPC Endpoint Wizard](images/vpc-endpoint-wizard-part-1.png)
+
+We want to attach the VPC endpoint to the public subnets - which is where we will be placing our EC2 instance shortly.
+Select all three public subnets as follows and for `IP address type` select `IPv4`
+![VPC Endpoint Wizard subnet selection](images/vpc-endpoint-wizard-part-2.png)
+
+Now we want to attach the  newly created security group 'wordpress-endpoints' to our VPC endpoint.
+![VPC Endpoint Wizard security group selection](images/vpc-endpoint-wizard-part-3.png)
+
+Keeping everything else as default, click create and repeat the actions to create the following endpoints:
+|Name |Service |
+|:------|:-----|
+|wordpress-ssmmessage | com.amazonaws.eu-west-2.ssmmessages  |
+|wordpress-ec2messages | com.amazonaws.eu-west-2.ec2messages  |
+
+That is it for this section.
 
 ## Create an RDS database
 For more information on RDS, refer to [service-information/README.md](../service-information/README.md#rds).
@@ -226,7 +234,7 @@ Next we want to allow the EC2 instance to connect to the RDS Database. We can do
 
 |Option |Value |
 |:------|:-----|
-|Type|MySQL|
+|Type|MySQL/Aurora|
 |Source | wordpress-srv |
 |Description | Allow inbound from EC2 |
 ![Security Group Inbound rule on wordpress-db](images/rds-security-group.png)
@@ -264,7 +272,8 @@ Don't panic! It is normal.
 Now that we've downloaded and installed the necessary service applications and the WordPress source code, we can setup a database schema to round off everything we need to do here.
 
 Running the following command will give you prompts to enter the RDS details you've taken a note of. Be sure to enter them within any spacing!
-```wget -O - https://raw.githubusercontent.com/BurendoUK/burendo-aws-labs/main/Labs/wordpress-via-console/ec2-database-setup.sh | bash```
+
+```bash <(wget -qO- https://raw.githubusercontent.com/BurendoUK/burendo-aws-labs/main/Labs/wordpress-via-console/ec2-database-setup.sh)```
 
 We've done all we need to do here. You can close the Systems Manager window safely by closing `Terminate` on the top right.
 
