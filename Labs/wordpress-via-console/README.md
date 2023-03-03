@@ -1,7 +1,7 @@
 # WordPress via the AWS Console
 In this lab, we will build a WordPress website in the cloud.
 This instruction set will use the AWS console exclusively and introduce you to key AWS services such as VPC, EC2, IAM, S3.
-We've built this instruction set to operate using AWS free-tier services, read more about AWS free tier.
+We've built this instruction set to operate using AWS free-tier services, read more about [AWS free tier](https://aws.amazon.com/free/).
 
 ## Prerequisites
 
@@ -19,6 +19,8 @@ In this lab we will cover the following services:
 - [VPC Endpoints](../service-information/README.md#vpc-endpoint)
 - [EC2](../service-information/README.md#ec2)
 - [RDS](../service-information/README.md#rds)
+
+The rest of this lab assumes that you have selected the `Europe (London) eu-west-2` region at the top right of the AWS console.
 
 Tip: Make use of the service search bar, when changing between services, at the top of the console page.
 
