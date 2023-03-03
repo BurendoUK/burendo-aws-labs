@@ -103,7 +103,7 @@ Now that we've created our VPC and our endpoints, we need to allow our soon to b
 
 Head to the `IAM` service page, choosing `Roles` on the left hand side navigation, click `Create Role`.
 
-We want to choose AWS as the trusted entity. And our use case is EC2 (this is what we are attaching the IAM too).
+We want to choose `AWS service` as the trusted entity. And our use case is EC2 (this is what we are attaching the IAM too).
 ![IAM Role Wizard](images/iam-wizard-part-1.png)
 
 On the next page, we want to search for and select the policy `AmazonSSMManagedInstanceCore`. This is a managed policy provided by AWS for the purpose of enabling AWS Systems Manager connectivity.
@@ -154,7 +154,7 @@ WordPress requires a MySQL relational database in order to store data about the 
 We want to create a MySQL relational database using AWS Relational Database Service.
 
 Head to to the RDS service page. We are going to create an RDS using the RDS creation wizard.
-Click `Create RDS`. We want to modify the options listed below, all else keep as default.
+Click `Create database`. We want to modify the options listed below, all else keep as default.
 
 We want to choose `Standard Create`, with an engine type of `MySQL`. Under database instance size, we want to choose `free tier`.
 
@@ -177,7 +177,7 @@ We want to choose `Standard Create`, with an engine type of `MySQL`. Under datab
 
 |Option |Value |
 |:------|:-----|
-|Connectivity | Connect to EC2 Instance |
+|Connectivity | Connect to an EC2 compute resource |
 |Connectivity > EC2 Instance | Select 'wordpress-srv' |
 |Connectivity > VPC security group | Create new |
 |Connectivity > VPC security group name | wordpress-db |
