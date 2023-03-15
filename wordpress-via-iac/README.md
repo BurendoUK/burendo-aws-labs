@@ -4,11 +4,11 @@ We can create 'infrastructure', servers and other related resources; through the
 
 - Not easily repeatable
 - Prone to human error
-- Time consuming
+- Time-consuming
 
-Infrastructure as Code is the practice of creating infrastructure via code like configuration files. Numerous tools exist in this area, each solving something different. For this lab we will focus on one of the more popular tools: Terraform.
+Infrastructure as Code is the practice of creating infrastructure via code like configuration files. Numerous tools exist in this area, each solving something different. For this lab, we will focus on one of the more popular tools: Terraform.
 
-The benefits of infrastructure of code far outweights the cost of creating it in the first place:
+The benefits of the infrastructure of code far outweighs the cost of creating it in the first place:
 
 - Repeatable, automated creation of infrastructure - allowing you to create an exact copy in another environment should you wish to.
 - Easy for multiple users to work on at once
@@ -18,12 +18,13 @@ The benefits of infrastructure of code far outweights the cost of creating it in
 ## Prerequisites
 
 - An AWS account
+- [AWSume](https://awsu.me/) installed
 - A machine running Windows, macOS or Linux
 - Terraform (see below)
 
 ## Terraform
 
-Terraform is an open source Infrastructure as Code product released by Hashicorp.
+Terraform is an open-source Infrastructure as Code product released by Hashicorp.
 It uses a declarative syntax language called Hashicorp Configuration Language (HCL) to declare the infrastructure you'd like to create in configuration files, known as Terraform files.
 
 ### Installation
@@ -50,19 +51,27 @@ For this lab we are going to work in three parts:
 
 ## Resource and Data blocks
 
-Read more about about resource and data blocks in the [resource-data-blocks.md](resource-data-blocks.md) file.
+Read more about resource and data blocks in the [resource-data-blocks.md](resource-data-blocks.md) file.
 
 ## Create the WordPress infrastructure
 
 Read more about the resources required to create a WordPress in the [wordpress-infra-creation.md](wordpress-infra-creation.md) file.
 
-
 # Quick Reference
-
-    terraform apply - Applies the terraform configuration against your environmment (destructive)
-    terraform plan  - Plans the terraform configuration against your environment (not destructive)
-    terraform init  - Initialises the project, downloads required plugins
-    terraform fmt   - Formats the Terraform code to be presentable
+    terraform apply     - Applies the terraform configuration against your environment (destructive)
+    terraform plan      - Plans the terraform configuration against your environment
+    terraform init      - Initialise the project and downloads required plugins
+    terraform fmt       - Formats the Terraform code to be presentable
+    terraform destroy   - Destroys all the infrastructure specified in the Terraform files, or a particular resource specified (destructive)
 
 For more information on each of the commands, refer to the [Terraform Command Documentation](https://developer.hashicorp.com/terraform/cli/commands)
+
+Destructive labels have been given to the above commands. These commands are destructive in that they will destroy infrastructure if you are not careful.
+
+# Limitations
+This lab has reduced the complexity of the Terraform setup slightly, by not using a remote state lock; instead, we will use the local lock file.
+In a team setup, you would use a remote state lock (in AWS' case, S3 & DynamoDB) to ensure only a single Terraform deployment can happen to an environment at once and that changes to the environment are saved, so that correct traceability of the changes are required and can be presented to others also using Terraform.
+
+# CONNOR - INSTRUCTION SETS REQUIRED
+- AWSUME instructions for profile login
 
