@@ -33,11 +33,3 @@ locals {
     }
   }
 }
-
-output "pub" {
-  value = local.public_cidr_sets
-}
-
-output "priv" {
-  value = local.private_cidr_sets
-}
