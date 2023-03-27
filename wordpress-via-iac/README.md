@@ -40,6 +40,7 @@ Head to the official Hashicorp website for Terraform to install Terraform approp
 Hashicorp Configuration Language is something that is in essence easy to pick up, but the 'resource' blocks are not something you'll ever need to memorise as they are all available to find on the official [Terraform Provider Documentation](https://registry.terraform.io/providers/hashicorp/aws/latest/docs).
 
 # The Lab
+Efforts have been made to ensure the product of this Lab only uses free-tier services. Unfortunately, we aren't able to guarantee this. Consider setting a budget & remember to remove all unused resources to avoid further costs.
 
 For this lab we are going to work in three parts:
 
@@ -56,6 +57,11 @@ Read more about resource and data blocks in the [resource-data-blocks.md](resour
 ## Create the WordPress infrastructure
 
 Read more about the resources required to create a WordPress in the [wordpress-infra-creation.md](wordpress-infra-creation.md) file.
+
+## Deploy
+
+Use the quick reference commands to plan / apply your infrastructure creation as you go - or only once you've finished.
+Terraform will highlight any issues it finds.
 
 # Quick Reference
     terraform apply     - Applies the terraform configuration against your environment (destructive)

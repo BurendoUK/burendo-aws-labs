@@ -41,5 +41,17 @@ resource "aws_launch_template" "wordpress_srv" {
     }
   }
 
-  user_data = filebase64("${path.module}/files/ec2-wordpress-install.sh")
+  user_data = base64encode(
+    templatefile("${path.module}/files/ec2-wordpress-install.sh",
+      {
+        wordpress_admin_secret_id    = "${aws_secretsmanager_secret.wordpress_rds_admin.name}"
+        wordpress_password_secret_id = "${aws_secretsmanager_secret.wordpress_rds_password.name}"
+        wordpress_rds_host_id        = "${aws_db_instance.wordpress_db.identifier}"
+      }
+    )
+  )
+
+  depends_on = [
+    aws_secretsmanager_secret.wordpress_rds_admin, aws_secretsmanager_secret.wordpress_rds_password
+  ]
 }
