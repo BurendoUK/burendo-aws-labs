@@ -5,5 +5,9 @@ variable "aws_region" {
 }
 
 variable "ec2_instance_class" {
-    default = "t3.micro"
+  default = "t3.micro"
+}
+
+variable "web_server_desired" {
+  default = "1"
 }

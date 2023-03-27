@@ -1,6 +1,6 @@
 resource "aws_autoscaling_group" "wordpress_srv" {
-  desired_capacity = 1
-  max_size         = 1
+  desired_capacity = var.web_server_desired
+  max_size         = var.web_server_desired
   min_size         = 1
 
   vpc_zone_identifier = [for subnet in aws_subnet.public_wordpress : subnet.id]
