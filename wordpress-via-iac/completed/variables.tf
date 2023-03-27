@@ -9,5 +9,5 @@ variable "ec2_instance_class" {
 }
 
 variable "web_server_desired" {
-  default = "1"
+  default = "2"
 }

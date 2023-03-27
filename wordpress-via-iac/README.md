@@ -18,8 +18,9 @@ The benefits of the infrastructure of code far outweighs the cost of creating it
 ## Prerequisites
 
 - An AWS account
-- [AWSume](https://awsu.me/) installed
 - A machine running Windows, macOS or Linux
+- Docker installed* - Not necessary if you are comfortable with your operating system and setting up the required applications.
+- [AWSume](https://awsu.me/) installed - To help you manage your AWS session.
 - Terraform (see below)
 
 ## Terraform
@@ -77,7 +78,4 @@ Destructive labels have been given to the above commands. These commands are des
 # Limitations
 This lab has reduced the complexity of the Terraform setup slightly, by not using a remote state lock; instead, we will use the local lock file.
 In a team setup, you would use a remote state lock (in AWS' case, S3 & DynamoDB) to ensure only a single Terraform deployment can happen to an environment at once and that changes to the environment are saved, so that correct traceability of the changes are required and can be presented to others also using Terraform.
-
-# CONNOR - INSTRUCTION SETS REQUIRED
-- AWSUME instructions for profile login
 
