@@ -23,3 +23,5 @@ RUN curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2
 # Install AWSUME
 RUN apt install pip -y
 RUN pip install awsume
+
+ENTRYPOINT [ "/bin/bash" ]

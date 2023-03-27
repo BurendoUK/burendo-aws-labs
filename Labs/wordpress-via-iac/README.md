@@ -53,15 +53,17 @@ For this lab we are going to work in three parts:
 
 ## Resource and Data blocks
 
-Read more about resource and data blocks in the [resource-data-blocks.md](resource-data-blocks.md) file.
+This is the first section of the Lab. It aims to educate you on what Terraform is and isn't, additionally what it's fundamental building blocks are and how to use them.
+Delve into the knowledge Terraform by reading and understanding the Resource and Data blocks by reading the [resource-data-blocks.md](resource-data-blocks.md) file.
 
 ## Create the WordPress infrastructure
 
-Read more about the resources required to create a WordPress in the [wordpress-infra-creation.md](wordpress-infra-creation.md) file.
+> For this section of the Lab it is advised to have the 'Lab' docker container running. See [LABS-CONTAINER.md](../LABS-CONTAINER.md) for instructions.
+We've split this section to reduce the noise in the README. Continue the lab by reading the [wordpress-infra-creation.md](wordpress-infra-creation.md) file.
 
 ## Deploy
 
-Use the quick reference commands to plan / apply your infrastructure creation as you go - or only once you've finished.
+Use the quick reference commands to plan or apply your infrastructure creation as you go - or only once you've finished.
 Terraform will highlight any issues it finds.
 
 # Quick Reference
