@@ -19,6 +19,7 @@ The benefits of the infrastructure of code far outweighs the cost of creating it
 
 - An AWS account
 - A machine running Windows, macOS or Linux
+- An IDE - We suggest [VS Code](https://code.visualstudio.com/download) and the 'Hashicorp Terraform' extension by Hashicorp.
 - Docker installed* - Not necessary if you are comfortable with your operating system and setting up the required applications.
 - [AWSume](https://awsu.me/) installed - To help you manage your AWS session.
 - Terraform (see below)
@@ -51,12 +52,12 @@ For this lab we are going to work in three parts:
 
 > There exists a 'complete' example of the Terraform to create a WordPress website. Try to not peek at this unless absolutely necessary! 
 
-## Resource and Data blocks
+## Section 1: Resource and Data blocks
 
-This is the first section of the Lab. It aims to educate you on what Terraform is and isn't, additionally what it's fundamental building blocks are and how to use them.
+This section aims to educate you on what Terraform is and isn't, additionally what its fundamental building blocks are and how to use them.
 Delve into the knowledge Terraform by reading and understanding the Resource and Data blocks by reading the [resource-data-blocks.md](resource-data-blocks.md) file.
 
-## Create the WordPress infrastructure
+## Section 2: Fix the WordPress infrastructure
 
 > For this section of the Lab it is advised to have the 'Lab' docker container running. See [LABS-CONTAINER.md](../LABS-CONTAINER.md) for instructions.
 We've split this section to reduce the noise in the README. Continue the lab by reading the [wordpress-infra-creation.md](wordpress-infra-creation.md) file.
