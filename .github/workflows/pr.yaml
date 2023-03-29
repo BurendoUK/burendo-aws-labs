@@ -1,8 +1,6 @@
-name: "Merge to main"
+name: "Pull request"
 on:
-  push:
-    branches:
-      - pull-request
+  pull_request:
 
 env:
   TEST_TAG: burendouk/aws-labs-cli:test
