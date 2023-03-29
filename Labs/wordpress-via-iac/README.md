@@ -79,5 +79,6 @@ Destructive labels have been given to the above commands. These commands are des
 
 # Limitations
 This lab has reduced the complexity of the Terraform setup slightly, by not using a remote state lock; instead, we will use the local lock file.
+
 In a team setup, you would use a remote state lock (in AWS' case, S3 & DynamoDB) to ensure only a single Terraform deployment can happen to an environment at once and that changes to the environment are saved, so that correct traceability of the changes are required and can be presented to others also using Terraform.
 
