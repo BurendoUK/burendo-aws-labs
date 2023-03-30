@@ -27,4 +27,7 @@ If you find you've exited the container - just re-run the command again.
 > If you receive a `not found: manifest unknown` remove the `--platform` flag and value.
 
 ## Navigating your operating system terminal
-For Linux and Mac users, you can navigate your operating system terminal
+For Linux and Mac users, you can navigate your operating system terminal using
+`cd`.
+
+
