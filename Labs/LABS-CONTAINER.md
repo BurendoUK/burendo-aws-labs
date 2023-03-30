@@ -9,7 +9,7 @@ The container, is a Docker container - find out more on the Docker website [Over
 
 ## Prerequisites
 
-- Docker installed
+- Docker installed - [Download Docker here](https://www.docker.com/products/docker-desktop/)
 
 ## Running the container
 
@@ -18,10 +18,13 @@ However, the container is built and pushed to Docker Hub for your convenience so
 
 To pull, run and interact with the container, use the following command inside the folder of the specific Lab you are working on.
 ```
-docker run -it -v $PWD:/labs burendouk/aws-labs-cli:latest
+docker run -it -v $PWD:/labs --platform=linux/amd64 burendouk/aws-labs-cli:latest
 ```
 
 If you find you've exited the container - just re-run the command again.
+
+> Note: Platform is specified to ensure compatibility across Mac devices.
+> If you receive a `not found: manifest unknown` remove the `--platform` flag and value.
 
 ## Navigating your operating system terminal
 For Linux and Mac users, you can navigate your operating system terminal

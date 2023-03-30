@@ -1,3 +1,7 @@
+# This file is incomplete. A section has been completed for you already but mandatory values for some resources are missing.
+# Where is the 'EC2'? - In order to make use of auto-scaling groups, we need to define a launch template.
+# Launch templates & auto-scaling groups replace the need for an EC2 instance definition.
+
 resource "aws_autoscaling_group" "wordpress_srv" {
   desired_capacity = var.web_server_desired
   max_size         = var.web_server_desired
@@ -13,7 +17,6 @@ resource "aws_autoscaling_group" "wordpress_srv" {
 }
 
 resource "aws_launch_template" "wordpress_srv" {
-  name = "wordpress-srv"
 
   ebs_optimized                        = true
   image_id                             = data.aws_ami.al2.id

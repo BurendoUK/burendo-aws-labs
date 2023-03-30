@@ -11,6 +11,7 @@ If you've yet to do that, AWS provide information and instructions on how to do 
 You may find the [AWSume usage guide](https://awsu.me/general/usage.html) helpful, however the command you are most likely looking for to get authenticated is:
 
 ```awsume my-aws-profile-name```
+(Replace `my-aws-profile-name` accordingly)
 
 This command will use the profile credentials within the AWS config files and if you have MFA enabled on your account, will ask for your one time passcode.
 
