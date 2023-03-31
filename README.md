@@ -28,9 +28,4 @@ This container aims to allow namely Windows users, to have a Linux environment C
 You do not need to build the image, the container is available on Docker hub. See [Labs Container](labs/LABS-CONTAINER.md) for details.
 
 ## Misc
-The '.github' folder offers no value related to any labs. It is a supporting element to present these labs on the [Burendo Handbook](https://handbook.burendo.com/)
-
-## Contributors
-
-For contributors, the GitHub actions pipeline 'merge.yaml' will run on merge to the main branch - this will trigger the [merge pipeline](https://github.com/BurendoUK/burendo-handbook-infrastructure/blob/main/.github/workflows/tf-merge.yml) in [BurendoUK/burendo-handbook-infrastructure](https://github.com/BurendoUK/burendo-handbook-infrastructure) repo.
-This is to ensure that the latest labs content is reflected on the handbook website without manual intervention required to rebuild & deploy.
+The '.github' folder holds the GitHub actions pipelines. We use these currently to create the [Labs Container](labs/LABS-CONTAINER.md) and push it to Docker Hub.
