@@ -6,21 +6,34 @@ Terraform as a tool allows for infrastructure creation across multiple cloud pro
 Terraform has a 'plugin' style concept that it calls 'providers', in order to create and work with AWS infrastructure in Terraform we must make use of the 'AWS' provider plugin.
 
 There are two key building blocks to understand that apply to all providers; a) Resources and b) Data Sources
-
 Each provider has different names and definitions for the resources and data sources, but the structure of either never changes.
 
-Once we've built our Terraform infrastructure files, we need to plan and deploy it. This is an important concept, so we'll start there first.
+We build Terraform infrastructure by creating resource and data source files for the services we want to use. Terraform files that reside in the same folder / directory are consider a Terraform project.
+For this Lab, the `attempt` and `complete` are separate folders and therefore considered separate 'projects' by Terraform.
+
+Once we've built our Terraform infrastructure project, we need to plan and deploy it. This is an important concept that helps you to understand the importance of resources and data sources, so we'll start there first.
 
 # Contents
-- [Terraform plan and deploy](#plan-and-deploy)
+- [Terraform plan and apply](#plan-and-apply)
 - [Resource block](#resource-block)
 - [Data Sources](#data-sources)
 - [Interlinking](#interlinking)
 - [Variables](#variables)
 - [Terraform State](#terraform-state)
 
-## Plan and deploy
-Terraform is a tool which takes 
+## Plan and apply
+Terraform is a tool which interprets Terraform files, which are written in Hashicorp Configuration Language, to evaluate and create what infrastructure to create in the cloud environment.
+
+Terraform has many commands but most notably is `terraform plan` and `terraform apply`.
+
+The Terraform plan command, uses the terraform files, creates a local representation of what the infrastructure should look like and compares this with the current 'state' of the environment you would deploy to. The differences are now shown to you. See [terraform state](#terraform-state) for a better understanding of what state is.
+Planning is not destructive, no actions are taken against the infrastructure in the environment.
+
+The Terraform apply command, uses the terraform files similar to terraform plan however, this time will ask for confirmation on the changes it is about to make and then proceed to make those changes in the environment you are choosing to deploy to. Terraform apply is therefore considered a destructive command. It has the potential to undo work and cause an infrastructure to break intentionally or unintentionally - so be careful!
+
+Terraform apply will use the changes you've accepted and instruct AWS of the resources you want to create / remove.
+
+What is a resource?
 
 ## Resource block
 Whenever you create any service in AWS, like EC2 or RDS, you are creating an infrastructure resource.
@@ -84,7 +97,49 @@ When we say 'use within Terraform', that links us nicely to [Interlinking](#inte
 That's it for data source.
 
 ## Interlinking
+Terraform resources and data sources are nothing but individual configurations. However Terraform is smarter than just being config in a file; it has awareness of all other resource configurations within the project and therefore we can 'interlink' resources or data sources within other resources or data sources.
+
+When we want to use interlinking, we can call on the resource or data source by using it's resource or data source type and unique name like such:
+`aws_instance.foo`
+(For data sources, prefix with `data.`)
+
+What do we mean by that?
+Take this EC2 Terraform resource:
+![](./images/ec2-terraform-resource.png)
+
+The AMI value in this example is a string. We can use Terraform interlinking to replace this string with a data source, which allows the value to be dynamic. The value from the data source is gained at `apply` time.
+
+If we create a data source, to find the AMI ID dynamically like so:
+![A Terraform data source to find an AMI ID dynamically](./images/ami-data-source.png)
+
+We can interlink that data source into our EC2 resource like so:
+![An example of Terraform data source interlinking](./images/ec2-ami-interlinking.png)
+> Notice the replacement of "ami-XXX" to `data.aws_ami.al2.arn`
+
+Interlinking also works for resources and the information they hold.
+For example, in an RDS resource, we can interlink an AWS Secret resource for the username and password values for the RDS administrative user.
+![An example of Terraform resource interlinking](./images/resource-interlinking.png)
+
+Interlinking can also be used for variables. For variables, we interlink them using `var.my_variable_name`.
+
+What are variables?
 
 ## Variables
+Variables in Terraform are just like variables in any other programming language. They hold a variable value but offer a fixed variable name.
+
+For Terraform however, variables can be overridden at `apply` time by using the command like such:
+
+```terraform apply --var="example_var=ami-abc123" --var="fake_var=foo"```
+
+Variables can have a default value which is used if a variable value is not supplied at `apply` time.
+
+![A variable resource block with a default value](./images/variable.png)
 
 ## Terraform State
+The 'state' is an overview of what resources have been deployed (& managed by Terraform) in an environment.
+Terraform uses this state to advise on changes when using `plan` or `apply`.
+
+For this Lab, the state is only available on the computer you are deploying the Terraform from. 
+In a team environment, we place the state into a centralised place. This allows multiple team members to work with the same Terraform project at the same time, without causing conflicts and destroying infrastructure that another team member has created - without being made aware that you are doing so.
+
+Gain a deeper understanding of Terraform state by reading the [Terraform state documentation](https://developer.hashicorp.com/terraform/language/state).
