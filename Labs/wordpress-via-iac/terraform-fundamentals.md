@@ -17,7 +17,7 @@ Once we've built our Terraform infrastructure project, we need to plan and deplo
 - [Terraform plan and apply](#plan-and-apply)
 - [Resource block](#resource-block)
 - [Data Sources](#data-sources)
-- [Interlinking](#interlinking)
+- [Interlinking (References)](#interlinking-references)
 - [Variables](#variables)
 - [Terraform State](#terraform-state)
 
@@ -62,6 +62,7 @@ Some values for a resource are mandatory, some are optional and may not be neede
 For all Terraform resources, you can refer back to the [Terraform documentation](https://registry.terraform.io/namespaces/hashicorp) to find out information on what attributes are required. Given we are using the AWS provider, we would look at the documentation relevant to that - [Terraform AWS Provider documentation](https://registry.terraform.io/providers/hashicorp/aws/latest/docs).
 
 This in essence, is all that a Terraform resource is.
+Read more about Terraform resources on the [Terraform resource documentation](https://developer.hashicorp.com/terraform/language/resources).
 
 ## Data Sources
 
@@ -94,12 +95,12 @@ For the EC2 example we've just shown, we now have the IP and instance ID availab
 
 When we say 'use within Terraform', that links us nicely to [Interlinking](#interlinking).
 
-That's it for data source.
+Read more about Terraform data sources on the [Terraform Data source documentation](https://developer.hashicorp.com/terraform/language/data-sources).
 
-## Interlinking
-Terraform resources and data sources are nothing but individual configurations. However Terraform is smarter than just being config in a file; it has awareness of all other resource configurations within the project and therefore we can 'interlink' resources or data sources within other resources or data sources.
+## Interlinking (References)
+Terraform resources and data sources are nothing but individual configurations. However Terraform is smarter than just being config in a file; it has awareness of all other resource configurations within the project and therefore we can 'interlink' (reference) resources or data sources within other resources or data sources.
 
-When we want to use interlinking, we can call on the resource or data source by using it's resource or data source type and unique name like such:
+When we want to use interlinking (referencing), we can call on the resource or data source by using it's resource or data source type and unique name like such:
 `aws_instance.foo`
 (For data sources, prefix with `data.`)
 
@@ -122,7 +123,8 @@ For example, in an RDS resource, we can interlink an AWS Secret resource for the
 
 Interlinking can also be used for variables. For variables, we interlink them using `var.my_variable_name`.
 
-What are variables?
+Officially, Terraform calls this referencing. We've used the term 'interlinking' to help simplify the concept.
+You can read more about referencing on the [Terraform referencing documentation](https://developer.hashicorp.com/terraform/language/expressions/references).
 
 ## Variables
 Variables in Terraform are just like variables in any other programming language. They hold a variable value but offer a fixed variable name.
@@ -134,6 +136,8 @@ For Terraform however, variables can be overridden at `apply` time by using the 
 Variables can have a default value which is used if a variable value is not supplied at `apply` time.
 
 ![A variable resource block with a default value](./images/variable.png)
+
+Read more about variables on the [Terraform values documentation](https://developer.hashicorp.com/terraform/language/values).
 
 ## Terraform State
 The 'state' is an overview of what resources have been deployed (& managed by Terraform) in an environment.
