@@ -1,7 +1,10 @@
 # Building the infrastructure for a WordPress website
-This Lab is 1 part knowledge & 1 part action. Before attempting to complete the 'action', consider gaining the knowledge.
+This Lab is 1 part knowledge & 1 part action. Before attempting to complete the 'action', consider gaining the knowledge. Check out the [Resource and Data]
 
 ## Setup
+> For this section of the Lab it is advised to have the 'Lab' docker container running. See [LABS-CONTAINER.md](../LABS-CONTAINER.md) for instructions.
+We've split this section to reduce the noise in the README. Continue the lab by reading the [wordpress-infra-creation.md](wordpress-infra-creation.md) file.
+
 Terraform uses your current active session with AWS, to plan out or deploy infrastructure. You'll need to be logged into AWS on your terminal in order to deploy.
 Our tool of choice and the one available within the 'Labs' container (see [labs container information](../LABS-CONTAINER.md)) is `AWSume`.
 
@@ -28,6 +31,8 @@ docker run -it -v $PWD:/labs burendouk/aws-labs-cli:latest
 ```
 
 Once launched, you will be greeted with a bash interface. If you aren't familiar with bash, you can find a [cheat sheet here](https://devhints.io/bash).
+
+> There exists a 'complete' example of the Terraform to create a WordPress website. Try to not peek at this unless absolutely necessary!
 
 ### Going further
 The broken Terraform leaves room for improvement. If you've successfully accomplished the above, explore and try to resolve the below, that would make this infrastructure 'Production' ready.
