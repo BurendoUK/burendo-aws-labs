@@ -5,7 +5,7 @@ FROM --platform=linux/amd64 ubuntu:22.04
 RUN apt update -y
 
 # Install essential packages
-RUN apt install lsb-release wget curl unzip vim nano gpg sudo git -y
+RUN apt install sudo git lsb-release wget curl unzip vim nano gpg -y
 
 # Install Terraform
 RUN wget --quiet https://releases.hashicorp.com/terraform/1.4.2/terraform_1.4.2_linux_amd64.zip \
