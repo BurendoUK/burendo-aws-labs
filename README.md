@@ -8,11 +8,11 @@ Each lab will contain an instruction set and any supporting material required to
 We consider a Lab to be any form of teaching which requires the individual to take action in a self paced, self driven way.
 
 ## Service Information
-For any services mentioned throughout the labs, you can find additional supporting information in [service-information/README.md](service-information/README.md).
+For any services mentioned throughout the labs, you can find additional supporting information in [service-information/README.md](Labs/service-information/README.md).
 
 ## Labs Available
-- [wordpress-via-console](wordpress-via-console/README.md) - `Beginner` - A complete guide to create a WordPress website using only the AWS console.
-- [wordpress-via-iac](wordpress-via-iac/README.md) - `Advanced` - An interactive lab to help teach Infrastructure as Code using Terraform.
+- [wordpress-via-console](Labs/wordpress-via-console/README.md) - `Beginner` - A complete guide to create a WordPress website using only the AWS console.
+- [wordpress-via-iac](Labs/wordpress-via-iac/README.md) - `Advanced` - An interactive lab to help teach Infrastructure as Code using Terraform.
 
 
 ## Future Labs
