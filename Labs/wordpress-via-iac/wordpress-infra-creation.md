@@ -34,7 +34,17 @@ Once launched, you will be greeted with a bash interface. If you aren't familiar
 
 > There exists a 'complete' example of the Terraform to create a WordPress website. Try to not peek at this unless absolutely necessary!
 
-### Going further
+## Cleaning up
+Once you've come to a point of 'done'; whether that be for the day or the attempt. Don't forget to clean up all of the resources you've created on AWS so not to incur any unnecessary charges.
+
+The beauty of Infrastructure as Code as it can clean up for you quickly but should you ever wish to deploy the resources again in the future - it'll take no time at all!
+
+Terraform has a command to remove all resources for a Terraform project.
+```terraform destroy```
+
+Read more about [terraform destroy](https://developer.hashicorp.com/terraform/cli/commands/destroy) on the official documentation.
+
+## Going further
 The broken Terraform leaves room for improvement. If you've successfully accomplished the above, explore and try to resolve the below, that would make this infrastructure 'Production' ready.
 
 Areas of known limitations:
